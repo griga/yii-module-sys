@@ -3,8 +3,6 @@
  * 
  */
 
-Yii::import('application.extensions.mailer.EMailer');
-
 class MailService extends CComponent {
 
     public static function send($templateName, $templateData, $address){
