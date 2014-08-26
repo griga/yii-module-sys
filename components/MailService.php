@@ -32,10 +32,12 @@ class MailService extends CComponent
         /** @var EMailer|PHPMailer $mailer */
         $mailer = new EMailer();
         $mailer->IsSMTP();
+//        $mailer->SMTPDebug  = 2;
+
         $mailer->IsHTML();
         $mailer->CharSet = 'UTF-8';
         $mailer->SMTPAuth = true;
-        $mailer->SMTPSecure = "tls";
+        $mailer->SMTPSecure =Config::get('mail.secure');
         $mailer->Host = Config::get('mail.host');
         $mailer->Port = Config::get('mail.port');
         $mailer->Username = Config::get('mail.username');
@@ -46,7 +48,8 @@ class MailService extends CComponent
         $mailer->AddAddress($to);
         $mailer->Subject = $subject;
         $mailer->Body = $message;
-        $mailer->Send();
+//        var_dump($mailer->Send());
+        $mailer->send();
     }
 
 } 
