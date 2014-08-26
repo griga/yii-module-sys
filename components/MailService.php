@@ -42,9 +42,9 @@ class MailService extends CComponent
         $mailer->Port = Config::get('mail.port');
         $mailer->Username = Config::get('mail.username');
         $mailer->Password = Config::get('mail.password');
-        $mailer->From = Config::get('site_email_address');
+        $mailer->From = Config::get('mail.username');
         $mailer->FromName = Config::get('site_email_from');
-        $mailer->AddReplyTo(Config::get('site_email_address'));
+        $mailer->AddReplyTo(Config::get('mail.username'));
         $mailer->AddAddress($to);
         $mailer->Subject = $subject;
         $mailer->Body = $message;
